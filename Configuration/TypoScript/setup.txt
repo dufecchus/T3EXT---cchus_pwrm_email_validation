@@ -1,0 +1,28 @@
+
+page {
+    includeJSFooter {
+        cchus_pwrm_email_validation = EXT:cchus_pwrm_email_validation/Resources/Public/JavaScript/cchus_pwrm_email_validation.js
+    }
+}
+
+plugin {
+    tx_powermail {
+        settings {
+            setup {
+                validators {
+                    cchus_pwrm_email_validation {
+                        class = CIUSSSECHUS\CchusPwrmEmailValidation\Domain\Validator\PowermailValidator
+                    }
+                }
+            }
+        }
+        objects {
+            In2code\Powermail\Domain\Model\Answer {
+                className = CIUSSSECHUS\CchusPwrmEmailValidation\Domain\Model\Answer
+            }
+            In2code\Powermail\Domain\Model\Field {
+                className = CIUSSSECHUS\CchusPwrmEmailValidation\Domain\Model\Field
+            }
+        }
+    }
+}

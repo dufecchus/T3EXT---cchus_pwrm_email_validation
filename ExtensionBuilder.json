@@ -1,0 +1,42 @@
+{
+    "modules": [],
+    "properties": {
+        "backendModules": [],
+        "description": "",
+        "emConf": {
+            "category": "misc",
+            "custom_category": "",
+            "dependsOn": "typo3 => 11.5.0-11.5.99\n",
+            "disableLocalization": true,
+            "disableVersioning": false,
+            "generateDocumentationTemplate": false,
+            "generateEditorConfig": false,
+            "generateEmptyGitRepository": false,
+            "sourceLanguage": "en",
+            "state": "alpha",
+            "targetVersion": "11.5.0-11.5.99",
+            "version": "1.0.0"
+        },
+        "extensionKey": "cchus_pwrm_email_validation",
+        "name": "CchusPwrmEmailValidation",
+        "originalExtensionKey": "",
+        "originalVendorName": "",
+        "persons": [
+            {
+                "company": "CIUSSSECHUS",
+                "email": "webmestre.tcr05@ssss.gouv.qc.ca",
+                "name": "F\u00e9lix Dumas-Lavoie",
+                "role": "Developer"
+            }
+        ],
+        "plugins": [],
+        "vendorName": "CIUSSSECHUS"
+    },
+    "wires": [],
+    "storagePath": "\/var\/www\/dev.portail.santeestrie.qc.ca\/web\/typo3conf\/ext\/",
+    "log": {
+        "last_modified": "2026-04-02 02:44",
+        "extension_builder_version": "11.0.13",
+        "be_user": "F\u00e9lix Dumas-Lavoie (16)"
+    }
+}

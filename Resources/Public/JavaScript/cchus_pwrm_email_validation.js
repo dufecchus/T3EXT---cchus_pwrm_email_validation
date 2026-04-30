@@ -1,18 +1,3 @@
-/*window.onload = function() {
-    if (window.jQuery) {
-        $(function() {
-            $('[id$="___cchus_pwrm_email_validation"]').each(function(i,o){
-                var pid = $('#'+$(o).attr("id").substring(0, $(o).attr("id").length - '___cchus_pwrm_email_validation'.length)).attr('id');
-                $(this).attr('data-parsley-equalto','#'+pid).attr('data-parsley-error-message', $(this).attr('data-parsley-custom200'));
-            });
-        });
-    } else {
-        console.error('jQuery isn\'t loaded and is mandatory for frontend validation. Only backend validation will be available.');
-    }
-}*/
-
-
-
 function ready(fn) {
     if (document.readyState !== 'loading') {
       fn();
@@ -25,15 +10,22 @@ function ready(fn) {
     var validationElements = []
     document.querySelectorAll('*[id]').forEach((element,idx) => {
 
-        console.log(element)
+        
         if (element.id.includes("cchus_pwrm_email_validation")){
             var object= {
                 id : element.id.replace("___cchus_pwrm_email_validation",""),
                 verificationField : element.id,
             }
+            document.getElementById(object.id)
+            var field = document.getElementById(object.id)
+            var label = field.labels[0]
+            
+
+            object["label"] = (String(label.innerHTML)).split("<")[0]
+            object["labelElement"] = label
+
             validationElements.push(object)
         }
-
     });;
    
   
@@ -62,7 +54,6 @@ function verifyFields(validationElements){
         document.getElementById(elem.verificationField).addEventListener("input", (event) => {
             contentB = document.getElementById(elem.verificationField).value  
             fieldTest()
-
         })
         
 
@@ -75,6 +66,7 @@ function verifyFields(validationElements){
             if (contentA === contentB && contentA !== ""){
                 button.disabled = false;
                 document.getElementById("pwrm_email_validation_errorMessageDiv").innerHTML = ""
+                elem["labelElement"].style = "color: black;"
 
                 return true;
             }
@@ -87,14 +79,14 @@ function verifyFields(validationElements){
         }
 
         function writeErrorMessage(){
-
+            elem["labelElement"].style = "color: red;"
             document.getElementById("pwrm_email_validation_errorMessageDiv").style = "color: red;"
 
             if (language === "fr"){
-                document.getElementById("pwrm_email_validation_errorMessageDiv").innerHTML = "Des champs ne correspondent pas. "
+                document.getElementById("pwrm_email_validation_errorMessageDiv").innerHTML = "Des champs ne correspondent pas: " + String(elem["label"]).toLowerCase()
             }
             else if (language === "en"){
-                document.getElementById("pwrm_email_validation_errorMessageDiv").innerHTML = "Fields does not match."
+                document.getElementById("pwrm_email_validation_errorMessageDiv").innerHTML = "Fields does not match: " + String(elem["label"]).toLowerCase()
             }      
         }
 

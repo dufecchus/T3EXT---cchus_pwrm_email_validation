@@ -18,11 +18,15 @@ function ready(fn) {
             }
             document.getElementById(object.id)
             var field = document.getElementById(object.id)
+            var field2 = document.getElementById(object.verificationField)
             var label = field.labels[0]
+            var label2 = field2.labels[0]
             
 
             object["label"] = (String(label.innerHTML)).split("<")[0]
             object["labelElement"] = label
+            object["label2"] = (String(label2.innerHTML)).split("<")[0]
+            object["label2Element"] = label2
 
             validationElements.push(object)
         }
@@ -35,6 +39,7 @@ function ready(fn) {
   })
 
 function verifyFields(validationElements){
+    
     validationElements.forEach((elem)=>{
         var contentA = document.getElementById(elem.id).value
         var contentB = document.getElementById(elem.verificationField).value  
@@ -67,6 +72,7 @@ function verifyFields(validationElements){
                 button.disabled = false;
                 document.getElementById("pwrm_email_validation_errorMessageDiv").innerHTML = ""
                 elem["labelElement"].style = "color: black;"
+                elem["label2Element"].style = "color: black;"
 
                 return true;
             }
@@ -80,6 +86,7 @@ function verifyFields(validationElements){
 
         function writeErrorMessage(){
             elem["labelElement"].style = "color: red;"
+            elem["label2Element"].style = "color: red;"
             document.getElementById("pwrm_email_validation_errorMessageDiv").style = "color: red;"
 
             if (language === "fr"){
